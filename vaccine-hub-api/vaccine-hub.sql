@@ -3,6 +3,6 @@
 
 DROP DATABASE vaccine_hub;
 CREATE DATABASE vaccine_hub;
-\connect vaccined_hub;
+\connect vaccine_hub;
 
 \i vaccine-hub-schema.sql
