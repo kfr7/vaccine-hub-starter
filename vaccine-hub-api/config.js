@@ -19,7 +19,10 @@ console.log("PORT:".blue, PORT)
 console.log("Database URI:".blue, getDatabaseUri())
 console.log("---".green)
 
+const BCRYPT_SALT_ROUNDS = 7
+
 module.exports = {
     PORT, 
-    getDatabaseUri
+    getDatabaseUri,
+    BCRYPT_SALT_ROUNDS
 }
