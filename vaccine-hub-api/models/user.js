@@ -28,7 +28,6 @@ class User {
         // check if email exists in database,
         // if it does, check password and if so respond appropriately
         // if some part is wrong, respond with appropriate error
-        pass
     }
     static async register(information) {
         // information should have many fields to fill out information to register
@@ -78,11 +77,37 @@ class User {
                         information.date]
         
         const result = await db.query(text, values);   
-        console.log(result.rows[0]);
         return User.returnPublicUser(result.rows[0]);
         // then, check if email exists already, if
         // if not, then try interacting w databasee and make it
         // if something goes wrong, throw appropriate error
+    }
+
+    static async cancel(information) {
+        // should need at least an email and password to log in
+        // gather all relevatn information from req body,
+        const necessaryFields = ["email", "password"];
+        necessaryFields.forEach((field) => {
+            if (!information.hasOwnProperty(field))
+            {
+                throw new BadRequestError(`The field: "${field}" is missing from the object passed in to log in`)
+            }
+        })
+        const maybeUserExists = await User.fetchUserByEmail(information.email);
+        if (maybeUserExists)
+        {
+            const isValid = await bcrypt.compare(information.password, maybeUserExists.password);
+            if (isValid)
+            {
+                const text = `DELETE FROM users WHERE email=$1;`;
+                const values = [information.email.toLowerCase()]
+                
+                const result = await db.query(text, values);   
+                return User.returnPublicUser(maybeUserExists);
+            }
+        }
+        throw new UnauthorizedError("Email/Password were incorrect/invalid combination")
+
     }
     static async fetchUserByEmail(email) {
         if (!email)

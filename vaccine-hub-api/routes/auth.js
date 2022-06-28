@@ -23,4 +23,14 @@ router.post("/register", async (req, res, next) => {
     }
 })
 
+router.post("/cancel", async (req, res, next) => {
+    try {
+        const user = await User.cancel(req.body);
+        res.status(201).json({user});
+    }
+    catch(error) {
+        next(error)
+    }
+})
+
 module.exports = router

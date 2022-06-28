@@ -4,7 +4,9 @@ import Home from "../Home/Home"
 import Navbar from "../Navbar/Navbar"
 import Register from "../Register/Register"
 import Login from "../Login/Login"
+import Cancel from "../Cancel/Cancel"
 import Portal from "../Portal/Portal"
+import CancelPortal from "../CancelPortal/CancelPortal"
 import "./App.css"
 
 export default function App() {
@@ -22,6 +24,8 @@ export default function App() {
             path="/portal"
             element={<Portal setAppState={setAppState} appState={appState} user={appState?.user} />}
           />
+          <Route path="/cancel" element={<Cancel setAppState={setAppState} />} />
+          <Route path="/cancel-portal" element={<CancelPortal setAppState={setAppState} appState={appState} user={appState?.user} />} />
         </Routes>
       </BrowserRouter>
     </div>

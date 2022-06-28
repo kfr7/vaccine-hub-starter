@@ -3,15 +3,15 @@ import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"
 import MedicalResearch from "../MedicalResearch/MedicalResearch"
 // import undraw_medical_research from "../../assets/undraw_medical_research_deep_blue.svg"
-import "./Login.css"
+import "./Cancel.css"
 
-export default function Login({ setAppState }) {
+export default function Cancel({ setAppState }) {
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(false)
   const [errors, setErrors] = useState({})
   const [form, setForm] = useState({
     email: "",
-    password: "",
+    password: ""
   })
 
   const handleOnInputChange = (event) => {
@@ -32,12 +32,12 @@ export default function Login({ setAppState }) {
     setErrors((e) => ({ ...e, form: null }))
 
     try {
-      const res = await axios.post(`http://localhost:3001/auth/login`, form)
+      const res = await axios.post(`http://localhost:3001/auth/cancel`, form)
       if (res?.data) {
-        console.log("LOG IN RESPONSE:", res.data)
+        console.log("CANCEL RESPONSE:", res.data)
         setAppState(res.data)
         setIsLoading(false)
-        navigate("/portal")
+        navigate("/cancel-portal")
       } else {
         setErrors((e) => ({ ...e, form: "Invalid username/password combination" }))
         setIsLoading(false)
@@ -51,14 +51,14 @@ export default function Login({ setAppState }) {
   }
 
   return (
-    <div className="Login">
+    <div className="Cancel">
       <div className="media">
         {/* <img src={undraw_medical_research} alt="medical research" /> */}
         <MedicalResearch width={555} />
       </div>
 
       <div className="card">
-        <h2>Login to the Portal</h2>
+        <h2>Cancel Appointment</h2>
 
         {Boolean(errors.form) && <span className="error">{errors.form}</span>}
         <br />

@@ -19,6 +19,9 @@ export default function Home() {
           <Link to="/portal">
             <button className="btn outline">Confirm Appointment</button>
           </Link>
+          <Link to="/cancel">
+            <button className="btn outline">Cancel Appointment</button>
+          </Link>
         </div>
       </div>
 

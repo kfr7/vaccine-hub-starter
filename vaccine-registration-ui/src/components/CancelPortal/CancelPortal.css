@@ -1,0 +1,64 @@
+.CancelPortal {
+    height: 100%;
+    max-width: 100vw;
+    display: flex;
+    margin: 50px;
+    padding: 50px;
+    border: solid 1px #ababb7;
+    border-radius: 8px;
+  }
+  .CancelPortal .content {
+    flex: 1 1 500px;
+    display: flex;
+    flex-direction: column;
+  }
+  .CancelPortal .content h1 {
+    font-weight: 800;
+    font-size: 40px;
+  }
+  .CancelPortal .card {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    max-height: 300px;
+    font-size: 18px;
+  }
+  .CancelPortal .card .apptAndLocation {
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+
+  .CancelPortal .card .appt {
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+  .CancelPortal .card .title {
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 40px;
+  }
+  .CancelPortal .card .title.green {
+    background: rgba(167, 98, 93, 0.1);
+    color: rgb(226, 61, 11);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 250px;
+    padding: 10px 20px;
+    margin: 20px 0;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .CancelPortal .card .footer {
+    margin-top: auto;
+  }
+  .CancelPortal .media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .CancelPortal .media img {
+    width: 100%;
+    max-width: 500px;
+  }
+  

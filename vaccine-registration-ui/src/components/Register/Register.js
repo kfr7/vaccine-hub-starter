@@ -74,7 +74,8 @@ export default function Signup({ setAppState }) {
         password: form.password,
       })
 
-      if (res?.data?.user) {
+      if (res?.data) {
+        console.log("REGISTER RESPONSE:", res.data)
         setAppState(res.data)
         setIsLoading(false)
         navigate("/portal")
